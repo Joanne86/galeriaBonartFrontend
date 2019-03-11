@@ -1,0 +1,11 @@
+#id{
+    width: 360px;
+}
+#btnbuscar{
+    width: 100px;
+    height: 37px;
+}
+#thead{
+    background-color:rgb(43, 158, 211); 
+    -webkit-text-fill-color:whitesmoke;
+}

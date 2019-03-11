@@ -1,0 +1,42 @@
+<div class="col-md-10">
+  <h2>Gestione sus contactos</h2>
+  <form class="form-inline my-2 my-lg-3" id="buscador">
+    <input [(ngModel)]="user.id" name="Id" class="form-control" placeholder="Id" id="id">
+    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit" (click)="readUser(user)"></button>
+  </form>
+
+  <table class="table">
+    <thead id="thead">
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td class="hidden">{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.description}}</td>
+        <td>
+          <div class="float-right" (click)="deleteUser(user)">
+            <i class="far fa-trash-alt"></i>
+          </div>
+        </td>
+        <td>
+          <div class="float-right mx-3" (click)="editUser(user)" data-toggle="modal" data-target="#exampleModal">
+            <i class="far fa-edit"></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

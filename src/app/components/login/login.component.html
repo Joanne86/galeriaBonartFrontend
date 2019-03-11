@@ -1,0 +1,19 @@
+<!--<a href="#" data-toggle="modal" data-target="#login-modal">Login</a>-->
+  <div >
+    <div class="loginmodal-container">
+      <h1>Login to Your Account</h1><br>
+      <form>
+        <input type="text" [(ngModel)]="username" name="user" placeholder="Username">
+        <input type="password" [(ngModel)]="password_" name="pass" placeholder="Password">
+        <button type="submit" name="login" class="btn btn-primary" (click)="iniciarSesion()">Login</button>
+      </form>
+
+      <div class="login-help">
+        <label (click)=cambiar()>Register</label>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "mostrarRegistro()">
+      <app-register></app-register>
+  </div>
+
