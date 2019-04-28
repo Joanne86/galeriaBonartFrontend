@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import * as proxy from '../../../proxy.config.json';
 
-import { User } from '../models/user.model';
 import { RequestService } from '../services/request.service';
 
 
@@ -14,7 +13,7 @@ const httpOptions = {
 export class UserService {
 
   constructor(private req: RequestService) { }
-
+//poner la url correcta por cada service
   public getUsers() {
     return this.req.get(`/findAll`);
   }

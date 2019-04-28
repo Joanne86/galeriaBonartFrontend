@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,8 +9,6 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class GestionComponent implements OnInit {
 
-  user:User = new User();
-  users: User[];
   nombre: string;
   idloged: number;
 
@@ -22,19 +19,19 @@ export class GestionComponent implements OnInit {
     if(this.idloged!=0){
       this.userService.readUsersId(this.idloged)
       .then(data => {
-        this.users = data;
+      //  this.users = data;
       });
     }else{
       this.userService.getUsers()
       .then(data => {
-        this.users = data;
+       // this.users = data;
       });
     }    
   }
-  deleteUser(user: User): void {
+  /*deleteUser(user: User): void {
     this.userService.deleteUser(user)
       .then(data => {
-        this.users = this.users.filter(u => u !== user);
+      //  this.users = this.users.filter(u => u !== user);
       });
   }
   editUser(user: User): void{
@@ -46,9 +43,9 @@ export class GestionComponent implements OnInit {
   readUser(user: User): void{
     this.userService.readUser(user)
       .then(data => {
-        this.users = [];
-        this.users.push(data);
+       // this.users = [];
+       // this.users.push(data);
       });
   }
-
+*/
 }

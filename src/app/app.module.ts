@@ -12,7 +12,6 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
-import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: 'welcome', component: MenuComponent, children: [ // rutas hijas, se verán dentro del componente padre
@@ -27,7 +26,6 @@ const routes: Routes = [
   ] },
   
   { path: 'sesion', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent}
 ];
 
@@ -38,8 +36,7 @@ const routes: Routes = [
     FormComponent,
     HomeComponent,
     GestionComponent,
-    LoginComponent,
-    RegisterComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
