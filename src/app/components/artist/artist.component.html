@@ -1,26 +1,26 @@
 <div class="col-md-10">
-  <h2>Gestione sus contactos</h2>
+  <h2>Artistas</h2>
   <form class="form-inline my-2 my-lg-3" id="buscador">
-    <input [(ngModel)]="user.id" name="Id" class="form-control" placeholder="Id" id="id">
+    <input [(ngModel)]="user.id" name="Id" class="form-control" placeholder="Documento" id="id">
     <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit" (click)="readUser(user)"></button>
   </form>
 
   <table class="table">
     <thead id="thead">
       <tr>
-        <th class="hidden">Id</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Email</th>
-        <th>Description</th>
+        <th class="hidden">Documento</th>
+        <th>Nombre</th>
+        <th>Celular</th>
+        <th>Direccion</th>
+        <th>Ciudad</th>
+        <th>Exposicion</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <td class="hidden">{{user.id}}</td>
+        <td class="hidden">{{artist.id}}</td>
         <td>{{user.name}}</td>
         <td>{{user.phone}}</td>
         <td>{{user.address}}</td>

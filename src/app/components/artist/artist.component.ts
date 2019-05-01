@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Artist } from 'src/app/models/Artist.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-gestion',
-  templateUrl: './gestion.component.html',
-  styleUrls: ['./gestion.component.css']
+  selector: 'app-artist',
+  templateUrl: './artist.component.html',
+  styleUrls: ['./artist.component.css']
 })
-export class GestionComponent implements OnInit {
+export class ArtistComponent implements OnInit {
 
+  artist : Artist;
   nombre: string;
   idloged: number;
 
