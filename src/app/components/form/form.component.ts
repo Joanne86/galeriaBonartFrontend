@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  constructor(private userService: UserService, private loginService: LoginService) { }
+  constructor( private loginService: LoginService) { }
 
   ngOnInit() {
     if(this.loginService.getsellerloged()!=null){

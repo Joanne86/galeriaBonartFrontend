@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { Artist } from 'src/app/models/Artist.model';
 import { LoginService } from 'src/app/services/login.service';
+import { RepositoryService } from 'src/app/services/repository.service';
 
 @Component({
   selector: 'app-artist',
@@ -10,25 +10,36 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ArtistComponent implements OnInit {
 
-  artist : Artist;
-  nombre: string;
-  idloged: number;
+  artist : Artist = new Artist();
+  artists: Artist[];
 
-  constructor(private userService: UserService, private loginService: LoginService) { }
+  constructor(private artistService: RepositoryService, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.idloged=this.loginService.idloged;
-    if(this.idloged!=0){
-      this.userService.readUsersId(this.idloged)
+    //this.idloged=this.loginService.idloged;
+      this.artistService.findAll(`artist-api`)
       .then(data => {
-      //  this.users = data;
+        this.artists = data;
+      });
+      
+    /* if(this.idloged!=0){
+     // this.artistService.readUsersId(this.idloged)
+      .then(data => {
+        this.artists = data;
       });
     }else{
       this.userService.getUsers()
       .then(data => {
        // this.users = data;
       });
-    }    
+    }    */
+  }
+
+  deleteArtist(): void {
+   console.log("borra");
+  }
+  updateArtist(): void {
+    console.log("edita");
   }
   /*deleteUser(user: User): void {
     this.userService.deleteUser(user)

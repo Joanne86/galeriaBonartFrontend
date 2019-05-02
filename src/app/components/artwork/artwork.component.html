@@ -1,3 +1,39 @@
-<p>
-  artwork works!
-</p>
+<div class="col-md-8 container">
+  <h2>Obras</h2>
+  <form class="form-inline my-3 my-lg-20" id="buscador">
+    <input [(ngModel)]="artwork.name" name="name" class="form-control" placeholder="Nombre de la obra" id="name">
+    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit" ></button>
+  </form>
+
+  <table class="table">
+    <thead id="thead">
+      <tr>
+        <th>Codigo de inscripcion</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Artista</th>
+        <th>  Añadir obra  <div class="float-left" (click)="deleteArtwork()">
+            <i class="fas fa-plus"></i>
+          </div>
+         
+          <th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let artwork of artworks">
+        <td class="hidden">{{artwork.inscription_code}}</td>
+        <td>{{artwork.name}}</td>
+        <td>{{artwork.price}}</td>
+        <td>{{artwork.artist.name}}</td>
+        <td>
+          <div class="float-center" (click)="deleteArtwork()">
+            <i class="far fa-trash-alt"></i>
+          </div>
+        </td>
+        <td>
+          <button *ngIf="price(artwork.price)" class="btn btn-info" (click)="sellArtwork(artwork)">Vender</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

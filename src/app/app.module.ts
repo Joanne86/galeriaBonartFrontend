@@ -7,7 +7,7 @@ import { FormComponent } from './components/form/form.component';
 import { RequestService } from './services/request.service';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './services/user.service';
+import { RepositoryService } from './services/repository.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
@@ -62,7 +62,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, RequestService, LoginService],
+  providers: [RepositoryService, RequestService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

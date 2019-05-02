@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
         .then(data => {
           if (data != null) {
             this.seller = data;
+            console.log('seller--->', this.seller);
+            sessionStorage.setItem("sellerD",this.seller.document);
             this.router.navigate(['welcome']);
           }
         }, error => {

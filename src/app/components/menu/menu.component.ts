@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RepositoryService } from 'src/app/services/repository.service';
+import { Room } from 'src/app/models/Room.model';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  room: Room = new Room();
+
+  constructor(private roomService: RepositoryService) { }
 
   ngOnInit() {
+    this.roomService.getCode(sessionStorage.getItem("sellerD")).then(data => {
+      this.room = data;
+      console.log('room code: ',this.room.code);
+      console.log('room : ',this.room);
+      sessionStorage.setItem("codeRoom", this.room.code.toString());
+    });
   }
 
 }
