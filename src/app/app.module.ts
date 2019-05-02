@@ -6,19 +6,33 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FormComponent } from './components/form/form.component';
 import { RequestService } from './services/request.service';
 import { HomeComponent } from './components/home/home.component';
-import { GestionComponent } from './components/gestion/gestion.component';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './services/user.service';
+import { RepositoryService } from './services/repository.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
-import { RegisterComponent } from './components/register/register.component';
+import { RoomComponent } from './components/room/room.component';
+import { ArtistComponent } from './components/artist/artist.component';
+import { SaleComponent } from './components/sale/sale.component';
+import { ArtworkComponent } from './components/artwork/artwork.component';
 
 const routes: Routes = [
   { path: 'welcome', component: MenuComponent, children: [ // rutas hijas, se verán dentro del componente padre
     {
-      path: 'gestion', // la ruta real es movimientos/nuevo
-      component: GestionComponent
+      path: 'artists', 
+      component: ArtistComponent
+    },
+    {
+      path: 'rooms', 
+      component: RoomComponent
+    },
+    {
+      path: 'sales', 
+      component: SaleComponent
+    },
+    {
+      path: 'artworks', 
+      component: ArtworkComponent
     },
     {
       path: 'add',
@@ -27,7 +41,6 @@ const routes: Routes = [
   ] },
   
   { path: 'sesion', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent}
 ];
 
@@ -37,9 +50,11 @@ const routes: Routes = [
     MenuComponent,
     FormComponent,
     HomeComponent,
-    GestionComponent,
     LoginComponent,
-    RegisterComponent
+    RoomComponent,
+    ArtistComponent,
+    SaleComponent,
+    ArtworkComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +62,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, RequestService, LoginService],
+  providers: [RepositoryService, RequestService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

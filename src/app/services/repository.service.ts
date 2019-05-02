@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import * as proxy from '../../../proxy.config.json';
 
-import { User } from '../models/user.model';
-import { RequestService } from '../services/request.service';
+import { RequestService } from './request.service';
 
 
 const httpOptions = {
@@ -11,19 +10,27 @@ const httpOptions = {
 };
 
 @Injectable()
-export class UserService {
+export class RepositoryService {
 
   constructor(private req: RequestService) { }
-
-  public getUsers() {
-    return this.req.get(`/findAll`);
+//poner la url correcta por cada service
+  public findAll(endpoint) {
+    return this.req.get(`/`+endpoint+`/findAll`);
   }
 
-  public deleteUser(user) {
-    return this.req.delete(`/deleteById/`, { queryParams: { id: user.id } });
+  public findByRoomCode(code) {
+    return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
+  }
+  public getCode(document){
+    return this.req.get(`/room-api/getCode/`, { queryParams: { document } });
+ 
   }
 
-  public readUser(user) {
+  public delete(endpoint, artist) {
+    return this.req.delete(`/deleteById/`, { queryParams: { id: artist.document } });
+  }
+
+  public findById(endpoint,user) {
     return this.req.get(`/findById/`, { queryParams: { id: user.id } });
   }
   public readUsersId(idsesion: number) {
