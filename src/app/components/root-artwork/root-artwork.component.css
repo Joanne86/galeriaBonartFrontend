@@ -1,0 +1,9 @@
+#btnAddArtowork{
+    width: 280px;
+      height: 48px;
+      border-radius: 20px;
+      background-color: #002c76;
+      cursor: pointer;
+      align-content: center;
+      text-align: center;
+  }

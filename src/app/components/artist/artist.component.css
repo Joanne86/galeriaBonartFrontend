@@ -9,3 +9,7 @@
     background-color:rgb(43, 158, 211); 
     -webkit-text-fill-color:whitesmoke;
 }
+.icon{
+    position:absolute;
+    left:18px;
+    }

@@ -1,8 +1,8 @@
-<div class="col-md-8 container">
+<div class="col-md-15">
   <h2>Obras</h2>
   <form class="form-inline my-3 my-lg-20" id="buscador">
     <input [(ngModel)]="artwork.name" name="name" class="form-control" placeholder="Nombre de la obra" id="name">
-    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit" ></button>
+    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit"(click)= findArtwork(artwork.name) ></button>
   </form>
 
   <table class="table">
@@ -10,10 +10,11 @@
       <tr>
         <th>Codigo de inscripcion</th>
         <th>Nombre</th>
-        <th>Precio</th>
+        <th>Precio</th> 
         <th>Artista</th>
-        <th>  Añadir obra  <div class="float-left" (click)="deleteArtwork()">
+        <th>  Añadir obra  <div class="float-left" (click)="mostrarComponente()" >
             <i class="fas fa-plus"></i>
+            
           </div>
          
           <th>

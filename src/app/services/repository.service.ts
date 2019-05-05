@@ -21,6 +21,9 @@ export class RepositoryService {
   public findByRoomCode(code) {
     return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
   }
+  public findByArtworkName(name) {
+    return this.req.get(`/artwork-api/findByName/`, { queryParams: { name: name } });
+  }
   public getCode(document){
     return this.req.get(`/room-api/getCode/`, { queryParams: { document } });
  
