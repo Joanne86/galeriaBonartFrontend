@@ -9,3 +9,11 @@
 #name{
     width: 350px;
 }
+#container{
+    margin-top: 95px; 
+}
+#btnAddArtwork{
+    
+    background-color:#7C7CE0;
+}
+

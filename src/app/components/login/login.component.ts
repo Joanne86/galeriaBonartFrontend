@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit {
     }
   }
   //habilitar los bonotes de busqueda y consumir el service (1 hora) -->
-  //crear el form de artwork y consumir el servicio
-  //unificar los dos componentes en uuno solo y poder hacer la animacion
-  //crear componente de añadir artwork y conssumir ese service (2 horas)
+  //crear el form de artwork y consumir el servicio -->
+  //unificar los dos componentes en uuno solo y poder hacer la animacion -->
+  //crear componente de añadir artwork y conssumir ese service (2 horas) -->
+  //verificar si existe la cedula con el que se esta creandp la obra -->
   //lograr vender pidiendo el doc del customer asosiado, en un modal (3 horas)
   //crear el componente de ventas y hacer las consultas que pide el enunciado (2 horas)
   //crear componente de segundo flujo con su menu  (2 hora)
