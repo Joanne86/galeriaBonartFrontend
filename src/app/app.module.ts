@@ -15,6 +15,7 @@ import { RoomComponent } from './components/room/room.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { ArtworkComponent } from './components/artwork/artwork.component';
+import { FormArtistComponent } from './components/form-artist/form-artist.component';
 
 const routes: Routes = [
   { path: 'welcome', component: MenuComponent, children: [ // rutas hijas, se verán dentro del componente padre
@@ -54,7 +55,8 @@ const routes: Routes = [
     RoomComponent,
     ArtistComponent,
     SaleComponent,
-    ArtworkComponent
+    ArtworkComponent,
+    FormArtistComponent
   ],
   imports: [
     BrowserModule,

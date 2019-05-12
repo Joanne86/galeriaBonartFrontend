@@ -21,13 +21,20 @@ export class RepositoryService {
   public findByRoomCode(code) {
     return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
   }
+  public findByArtworkName(name) {
+    return this.req.get(`/artwork-api/findByName/`, { queryParams: { name: name } });
+  }
   public getCode(document){
     return this.req.get(`/room-api/getCode/`, { queryParams: { document } });
  
   }
 
-  public delete(endpoint, artist) {
-    return this.req.delete(`/deleteById/`, { queryParams: { id: artist.document } });
+  public findByDocument(document){
+    return this.req.get(`/artist-api/findByDocument/`, { queryParams: { document } });
+  }
+
+  public delete(endpoint, artwork) {
+    return this.req.delete(`/`+endpoint+`/delete/`, { queryParams: {inscription_code: artwork.inscription_code} });
   }
 
   public findById(endpoint,user) {
@@ -37,8 +44,8 @@ export class RepositoryService {
     return this.req.get(`/findAllByIdsesion/`, { queryParams: { idsesion } });
   }
 
-  public createUser(user) {
-    return this.req.post(`/create`, { data: user });
+  public create(endpoint, entity) {
+    return this.req.post(`/`+endpoint+`/create`, { data: entity });
   }
 
   public updateUser(user) {
