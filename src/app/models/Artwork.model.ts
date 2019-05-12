@@ -5,6 +5,12 @@ export class Artwork{
     inscription_code: number;
     name : string;
     price: number;
-    artist: Artist;
-    room: Room;
+    artist: Artist = new Artist();
+    room: Room= new Room();
+    getArtist(){
+        return this.artist;
+    }
+    getRoom(){
+        return this.room;
+    }
 }
