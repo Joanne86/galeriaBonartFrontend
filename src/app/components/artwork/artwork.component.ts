@@ -26,6 +26,10 @@ export class ArtworkComponent implements OnInit {
       });
   }
   sellArtwork(artwork) {
+    //sale-api
+    this.artworkService.create("sale-api", artwork).then(response =>{
+      alert("OBRA VENDIDA");
+    });
 
   }
   price(artwork) {

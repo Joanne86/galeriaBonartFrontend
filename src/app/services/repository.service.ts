@@ -45,7 +45,7 @@ export class RepositoryService {
   }
 
   public create(endpoint, entity) {
-    return this.req.post(`/`+endpoint+`/create`, { data: entity });
+    return this.req.post(`/`+endpoint+`/create/`, { data: entity });
   }
 
   public updateUser(user) {
