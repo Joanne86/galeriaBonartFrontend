@@ -1,7 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Artist } from 'src/app/models/Artist.model';
 import { RepositoryService } from 'src/app/services/repository.service';
 import { Artwork } from 'src/app/models/Artwork.model';
+import { Sale } from 'src/app/models/Sale.model';
+import { Customer } from 'src/app/models/Customer.model';
+import { ArtworkSaled } from 'src/app/models/ArtworkSaled.model';
 
 @Component({
   selector: 'app-artwork',
@@ -11,6 +13,9 @@ import { Artwork } from 'src/app/models/Artwork.model';
 export class ArtworkComponent implements OnInit {
   artworks: Artwork[];
   artwork: Artwork = new Artwork();
+  artworkSaled : ArtworkSaled = new ArtworkSaled();
+  sale: Sale;
+  customer : Customer;
 
   constructor(private artworkService: RepositoryService) { }
   show: boolean;
@@ -26,10 +31,42 @@ export class ArtworkComponent implements OnInit {
       });
   }
   sellArtwork(artwork) {
-    //sale-api
-    this.artworkService.create("sale-api", artwork).then(response =>{
-      alert("OBRA VENDIDA");
+    this.sale = new Sale();
+    this.customer = new Customer();
+    let document;
+    document = prompt("DOCUMENTO DEL CLIENTE: ");
+    //validar si existe doc del cliente
+    if(document!==""){
+      this.customer.document =document;
+      this.sale.artwork=artwork;
+      this.sale.customer=this.customer;
+      this.artworkService.create("sale-api", this.sale).then(response =>{
+        alert("OBRA VENDIDA");
+        this.saveArtworkSaled(artwork);
+      }, error =>{
+        alert("ERROR AL VENDER LA OBRA");
+      });
+      //this.deleteArtwork(artwork);
+    }else{
+      alert("NO PUEDE ESTAR VACIO EL CAMPO");
+    }
+    
+
+  }
+
+  saveArtworkSaled(artwork: Artwork){
+    //se arma la obra vendida
+
+    this.artworkSaled.inscription_code=artwork.inscription_code;
+    this.artworkSaled.name=artwork.name;
+    this.artworkSaled.number_room=artwork.room.code;
+    this.artworkSaled.price=artwork.price;
+    this.artworkSaled.artist=artwork.artist.name;
+    //se guarda la obra vendida en la lista de obras
+    this.artworkService.create("artworksaled-api", artwork).then(Response =>{
+      console.log('se guardo la obra en obras vendidas');
     });
+
 
   }
   price(artwork) {
