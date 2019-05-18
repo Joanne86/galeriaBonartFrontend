@@ -29,8 +29,8 @@ export class RepositoryService {
  
   }
 
-  public findByDocument(document){
-    return this.req.get(`/artist-api/findByDocument/`, { queryParams: { document } });
+  public findByDocument(endpoint, document){
+    return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document } });
   }
 
   public delete(endpoint, artwork) {
