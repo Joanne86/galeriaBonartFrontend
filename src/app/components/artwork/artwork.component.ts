@@ -1,7 +1,10 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Artist } from 'src/app/models/Artist.model';
 import { RepositoryService } from 'src/app/services/repository.service';
 import { Artwork } from 'src/app/models/Artwork.model';
+import { Sale } from 'src/app/models/Sale.model';
+import { Customer } from 'src/app/models/Customer.model';
+import { ArtworkSaled } from 'src/app/models/ArtworkSaled.model';
+import { ArrayType } from '@angular/compiler';
 
 @Component({
   selector: 'app-artwork',
@@ -11,7 +14,10 @@ import { Artwork } from 'src/app/models/Artwork.model';
 export class ArtworkComponent implements OnInit {
   artworks: Artwork[];
   artwork: Artwork = new Artwork();
-
+  artworkSaled: ArtworkSaled = new ArtworkSaled();
+  sale: Sale;
+  customer: Customer;
+  document;
   constructor(private artworkService: RepositoryService) { }
   show: boolean;
   ngOnInit() {
@@ -25,7 +31,55 @@ export class ArtworkComponent implements OnInit {
         this.artworks = data;
       });
   }
-  sellArtwork(artwork) {
+
+  sellArtwork(artwork: Artwork, artworkSaled: ArtworkSaled) {
+    this.sale = new Sale();
+    this.customer = new Customer();
+
+    this.customer.document = this.document;
+    this.sale.artworkSaled = artworkSaled;
+    this.sale.customer = this.customer;
+    this.artworkService.create("sale-api", this.sale).then(response => {
+      alert("OBRA VENDIDA");
+      this.deleteArtwork(artwork);
+    }, error => {
+      alert("ERROR AL VENDER LA OBRA");
+    });
+  }
+
+  saveArtworkSaled(artwork: Artwork) {
+    this.document = prompt("DOCUMENTO DEL CLIENTE: ");
+    //validar si existe doc del cliente
+    let customerExist;
+    if (this.document !== "") {
+      this.artworkService.findByDocument("customer-api", this.document).then(response => {
+
+        customerExist = response;
+        console.log(customerExist);
+        if (customerExist) {
+          //se arma la obra vendida
+          this.artworkSaled.inscription_code = artwork.inscription_code;
+          this.artworkSaled.name = artwork.name;
+          this.artworkSaled.number_room = artwork.room.code;
+          this.artworkSaled.price = artwork.price;
+          this.artworkSaled.artist = artwork.artist.name;
+  
+          console.log();
+          //se guarda la obra vendida en la lista de obras
+          this.artworkService.create("artworksaled-api", this.artworkSaled).then(Response => {
+            console.log('se guardo la obra en obras vendidas');
+            this.sellArtwork(artwork, this.artworkSaled);
+          }, error => {
+            console.log('ERROR al guardar obra vendida');
+          });
+        } else {
+          alert("NO EXISTE CLIENTE CON ESE DOCUMENTO");
+        }
+      });
+      
+    }else {
+      alert("NO PUEDE ESTAR VACIO EL CAMPO");
+    }
 
   }
   price(artwork) {
@@ -55,18 +109,18 @@ export class ArtworkComponent implements OnInit {
       alert("LLENE TODOS LOS CAMPOS");
 
     } else {
-      this.artworkService.findByDocument(artwork.artist.document).then(response =>{
-        if(response){
+      this.artworkService.findByDocument("artist-api", artwork.artist.document).then(response => {
+        if (response) {
           artwork.room.code = sessionStorage.getItem("codeRoom");
           this.artworkService.create("artwork-api", artwork).then(data => {
             alert("LA OBRA GUARDADA");
             this.findAll();
           });
-        }else{
+        } else {
           alert("NO HAY UN ARTISTA REGISTRADO CON ESE DOCUMENTO, PRIMERO DEBE REGISTRARLO");
         }
       });
-      
+
     }
   }
   mostrarComponente() {
@@ -79,9 +133,9 @@ export class ArtworkComponent implements OnInit {
       this.show = false;
     }
   }
-  deleteArtwork(artwork){
-    console.log('artwork--->',artwork );
-   this.artworkService.delete("artwork-api", artwork)
+  deleteArtwork(artwork) {
+    console.log('artwork--->', artwork);
+    this.artworkService.delete("artwork-api", artwork)
       .then(data => {
         this.artworks = this.artworks.filter(data => data !== artwork);
       });

@@ -10,12 +10,13 @@ import { Room } from 'src/app/models/Room.model';
 export class MenuComponent implements OnInit {
 
   room: Room = new Room();
-
+  name;
   constructor(private roomService: RepositoryService) { }
 
   ngOnInit() {
     this.roomService.getCode(sessionStorage.getItem("sellerD")).then(data => {
       this.room = data;
+      this.name = sessionStorage.getItem("sellerName");
       console.log('room code: ',this.room.code);
       console.log('room : ',this.room);
       sessionStorage.setItem("codeRoom", this.room.code.toString());

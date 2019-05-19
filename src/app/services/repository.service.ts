@@ -21,6 +21,11 @@ export class RepositoryService {
   public findByRoomCode(code) {
     return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
   }
+
+  public findSalesByRoomCode(code) {
+    return this.req.get(`/artworksaled-api/findAllByNumberRoom/`, { queryParams: { number_room: code } });
+  }
+
   public findByArtworkName(name) {
     return this.req.get(`/artwork-api/findByName/`, { queryParams: { name: name } });
   }
@@ -28,9 +33,12 @@ export class RepositoryService {
     return this.req.get(`/room-api/getCode/`, { queryParams: { document } });
  
   }
+  public getTotal (room){
+    return this.req.get(`/artworksaled-api/getTotal/`, { queryParams: { number_room: room } });
+  }
 
-  public findByDocument(document){
-    return this.req.get(`/artist-api/findByDocument/`, { queryParams: { document } });
+  public findByDocument(endpoint, document){
+    return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document } });
   }
 
   public delete(endpoint, artwork) {
@@ -45,7 +53,7 @@ export class RepositoryService {
   }
 
   public create(endpoint, entity) {
-    return this.req.post(`/`+endpoint+`/create`, { data: entity });
+    return this.req.post(`/`+endpoint+`/create/`, { data: entity });
   }
 
   public updateUser(user) {

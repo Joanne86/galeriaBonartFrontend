@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
             this.seller = data;
             console.log('seller--->', this.seller);
             sessionStorage.setItem("sellerD",this.seller.document);
+            sessionStorage.setItem("sellerName", this.seller.name);
             this.router.navigate(['welcome']);
           }
         }, error => {
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
   //unificar los dos componentes en uuno solo y poder hacer la animacion -->
   //crear componente de añadir artwork y conssumir ese service (2 horas) -->
   //verificar si existe la cedula con el que se esta creandp la obra -->
+  //crear componente de customer
   //lograr vender pidiendo el doc del customer asosiado, en un modal (3 horas)
   //crear el componente de ventas y hacer las consultas que pide el enunciado (2 horas)
   //crear componente de segundo flujo con su menu  (2 hora)
