@@ -24,7 +24,7 @@
       <tr *ngFor="let artwork of artworks">
         <td class="hidden">{{artwork.inscription_code}}</td>
         <td>{{artwork.name}}</td>
-        <td>{{artwork.price}}</td>
+        <td>{{artwork.price | currency}}</td>
         <td>{{artwork.artist.name}}</td>
         <td>
           <div class="float-center" (click)="deleteArtwork(artwork)">
@@ -32,7 +32,7 @@
           </div>
         </td>
         <td>
-          <button *ngIf="price(artwork)" class="btn btn-info" (click)="sellArtwork(artwork)">Vender</button>
+          <button *ngIf="price(artwork)" class="btn btn-info" (click)="saveArtworkSaled(artwork)">Vender</button>
         </td>
       </tr>
     </tbody>
