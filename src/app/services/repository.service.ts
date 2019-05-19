@@ -21,12 +21,20 @@ export class RepositoryService {
   public findByRoomCode(code) {
     return this.req.get(`/artwork-api/findByRoomCode/`, { queryParams: { code: code } });
   }
+
+  public findSalesByRoomCode(code) {
+    return this.req.get(`/artworksaled-api/findAllByNumberRoom/`, { queryParams: { number_room: code } });
+  }
+
   public findByArtworkName(name) {
     return this.req.get(`/artwork-api/findByName/`, { queryParams: { name: name } });
   }
   public getCode(document){
     return this.req.get(`/room-api/getCode/`, { queryParams: { document } });
  
+  }
+  public getTotal (room){
+    return this.req.get(`/artworksaled-api/getTotal/`, { queryParams: { number_room: room } });
   }
 
   public findByDocument(endpoint, document){

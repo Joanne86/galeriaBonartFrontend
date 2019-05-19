@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
             this.seller = data;
             console.log('seller--->', this.seller);
             sessionStorage.setItem("sellerD",this.seller.document);
+            sessionStorage.setItem("sellerName", this.seller.name);
             this.router.navigate(['welcome']);
           }
         }, error => {
