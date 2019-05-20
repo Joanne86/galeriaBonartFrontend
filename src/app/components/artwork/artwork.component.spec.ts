@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArtworkComponent } from './artwork.component';
 import { FormsModule } from '@angular/forms';
+import { RepositoryService } from 'src/app/services/repository.service';
+import { HttpHandler, HttpClient } from '@angular/common/http';
+import { LoginService } from 'src/app/services/login.service';
 
 describe('ArtworkComponent', () => {
   let component: ArtworkComponent;
@@ -10,7 +13,8 @@ describe('ArtworkComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ArtworkComponent ],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      providers: [RepositoryService, HttpClient, HttpHandler, LoginService]
     })
     .compileComponents();
   }));

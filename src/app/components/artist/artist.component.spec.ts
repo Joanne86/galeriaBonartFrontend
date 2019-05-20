@@ -3,8 +3,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArtistComponent } from './artist.component';
 import { FormsModule } from '@angular/forms';
 import { RepositoryService } from 'src/app/services/repository.service';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { LoginService } from 'src/app/services/login.service';
 
-fdescribe('ArtistComponent', () => {
+describe('ArtistComponent', () => {
   let component: ArtistComponent;
   let fixture: ComponentFixture<ArtistComponent>;
 
@@ -12,7 +14,7 @@ fdescribe('ArtistComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ArtistComponent ],
       imports: [FormsModule],
-      providers: [RepositoryService]
+      providers: [RepositoryService, HttpClient, HttpHandler, LoginService]
     })
     .compileComponents();
   }));
@@ -23,7 +25,7 @@ fdescribe('ArtistComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create artist test ', () => {
     expect(component).toBeTruthy();
   });
 });

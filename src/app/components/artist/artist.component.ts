@@ -12,27 +12,18 @@ export class ArtistComponent implements OnInit {
 
   artist : Artist = new Artist();
   artists: Artist[];
+  errorFindAll: boolean;
 
   constructor(private artistService: RepositoryService, private loginService: LoginService) { }
 
   ngOnInit() {
-    //this.idloged=this.loginService.idloged;
       this.artistService.findAll(`artist-api`)
       .then(data => {
         this.artists = data;
+        this.errorFindAll=false
+      }, error =>{
+        this.errorFindAll=true;
       });
-      
-    /* if(this.idloged!=0){
-     // this.artistService.readUsersId(this.idloged)
-      .then(data => {
-        this.artists = data;
-      });
-    }else{
-      this.userService.getUsers()
-      .then(data => {
-       // this.users = data;
-      });
-    }    */
   }
 
   deleteArtist(): void {
