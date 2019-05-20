@@ -1,14 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArtistComponent } from './artist.component';
+import { FormsModule } from '@angular/forms';
+import { RepositoryService } from 'src/app/services/repository.service';
 
-describe('ArtistComponent', () => {
+fdescribe('ArtistComponent', () => {
   let component: ArtistComponent;
   let fixture: ComponentFixture<ArtistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArtistComponent ]
+      declarations: [ ArtistComponent ],
+      imports: [FormsModule],
+      providers: [RepositoryService]
     })
     .compileComponents();
   }));

@@ -127,7 +127,7 @@ export class ArtworkComponent implements OnInit {
 
     if (this.show === false) {
       console.log('muetsra componente');
-      this.show = true;
+      this.show = true; 
     } else {
       console.log('oculta componente');
       this.show = false;

@@ -62,7 +62,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [RepositoryService, RequestService, LoginService],
   bootstrap: [AppComponent]
