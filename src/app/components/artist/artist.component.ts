@@ -10,46 +10,26 @@ import { RepositoryService } from 'src/app/services/repository.service';
 })
 export class ArtistComponent implements OnInit {
 
-  artist : Artist = new Artist();
+  artist: Artist = new Artist();
   artists: Artist[];
   errorFindAll: boolean;
 
   constructor(private artistService: RepositoryService, private loginService: LoginService) { }
 
   ngOnInit() {
-      this.artistService.findAll(`artist-api`)
+    this.artistService.findAll(`artist-api`)
       .then(data => {
         this.artists = data;
-        this.errorFindAll=false
-      }, error =>{
-        this.errorFindAll=true;
+        this.errorFindAll = false;
+      }, error => {
+        this.errorFindAll = true;
       });
   }
 
   deleteArtist(): void {
-   console.log("borra");
+    console.log('borra');
   }
   updateArtist(): void {
-    console.log("edita");
+    console.log('edita');
   }
-  /*deleteUser(user: User): void {
-    this.userService.deleteUser(user)
-      .then(data => {
-      //  this.users = this.users.filter(u => u !== user);
-      });
-  }
-  editUser(user: User): void{
-    this.userService.deleteUser(user)
-    .then(data =>{
-      
-    })
-  }
-  readUser(user: User): void{
-    this.userService.readUser(user)
-      .then(data => {
-       // this.users = [];
-       // this.users.push(data);
-      });
-  }
-*/
 }
