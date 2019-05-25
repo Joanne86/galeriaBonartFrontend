@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { FormComponent } from './components/form/form.component';
 import { RequestService } from './services/request.service';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
@@ -36,10 +35,6 @@ const routes: Routes = [
       path: 'artworks', 
       component: ArtworkComponent
     },
-    {
-      path: 'add',
-      component: FormComponent
-    }
   ] },
   
   { path: 'sesion', component: LoginComponent },
@@ -50,7 +45,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     MenuComponent,
-    FormComponent,
     HomeComponent,
     LoginComponent,
     RoomComponent,
@@ -62,9 +56,10 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [RepositoryService, RequestService, LoginService],
   bootstrap: [AppComponent]
