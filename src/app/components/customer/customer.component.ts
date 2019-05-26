@@ -70,7 +70,7 @@ export class CustomerComponent implements OnInit {
   createCustomer(customer: Customer) {
     this.customerService.findByDocument(`customer-api`, customer.document).then(response => {
       if (response) {
-        alert('ESTE CLIENTE YA INGRESO A LA OBRA');
+        alert('ESTE CLIENTE YA INGRESO AL EVENTO');
       } else {
         console.log(this.codetype);
         this.typeCustomer.codetype = TYPE_CUSTOMER[this.codetype];
