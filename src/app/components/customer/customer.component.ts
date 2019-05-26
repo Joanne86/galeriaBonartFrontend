@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/Customer.model';
 import { LoginService } from 'src/app/services/login.service';
 import { RepositoryService } from 'src/app/services/repository.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { TypeCustomer } from 'src/app/models/TypeCustomer.model';
 
 let TYPE_CUSTOMER = {
@@ -24,6 +23,7 @@ export class CustomerComponent implements OnInit {
   show: boolean;
   document;
   codetype;
+  total;
 
 
 
@@ -32,6 +32,12 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
     this.show = false;
     this.findAll();
+    this.getTotal();  
+  }
+  getTotal(){
+    this.customerService.getTotalT().then(response => {
+      this.total=response;
+    });
   }
   findAll() {
     this.customerService.findAll(`customer-api`)
@@ -74,6 +80,7 @@ export class CustomerComponent implements OnInit {
         this.customerService.create(`customer-api`, customer).then(response => {
           alert('Cliente registrado con EXITO');
           this.findAll();
+          this.getTotal();
         }, error => {
           alert('ERROR al registrar cliente');
         });

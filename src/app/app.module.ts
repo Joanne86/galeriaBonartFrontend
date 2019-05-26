@@ -17,6 +17,7 @@ import { ArtworkComponent } from './components/artwork/artwork.component';
 import { FormArtistComponent } from './components/form-artist/form-artist.component';
 import { Menu2Component } from './components/menu2/menu2.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { SaleAdminComponent } from './components/sale-admin/sale-admin.component';
 
 const routes: Routes = [
   {
@@ -51,8 +52,8 @@ const routes: Routes = [
         component: CustomerComponent
       },
       {
-        path: 'sales',
-        component: SaleComponent
+        path: 'sale_admin',
+        component: SaleAdminComponent
       },
     ]
   },
@@ -72,7 +73,8 @@ const routes: Routes = [
     SaleComponent,
     ArtworkComponent,
     FormArtistComponent,
-    Menu2Component
+    Menu2Component,
+    SaleAdminComponent
   ],
   imports: [
     BrowserModule,

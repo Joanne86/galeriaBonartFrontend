@@ -52,18 +52,16 @@ export class ArtworkComponent implements OnInit {
     // validar si existe doc del cliente
     let customerExist;
     if (this.document !== '') {
-      this.artworkService.findByDocument('customer-api', this.document).then(response => {
-
-        customerExist = response;
-        console.log(customerExist);
-        if (customerExist) {
+      this.artworkService.findByDocument_('customer-api', this.document).then(response => {
+        if (response!==null) {
           // se arma la obra vendida
           this.artworkSaled.inscription_code = artwork.inscription_code;
           this.artworkSaled.name = artwork.name;
           this.artworkSaled.number_room = artwork.room.code;
           this.artworkSaled.price = artwork.price;
           this.artworkSaled.artist = artwork.artist.name;
-
+          this.artworkSaled.customer = response.name;
+          this.artworkSaled.seller = sessionStorage.getItem("sellerName");
           console.log();
           // se guarda la obra vendida en la lista de obras
           this.artworkService.create('artworksaled-api', this.artworkSaled).then(Response => {

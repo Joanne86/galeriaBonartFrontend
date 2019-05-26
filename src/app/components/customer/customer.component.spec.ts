@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ArtistComponent } from '../artist/artist.component';
 
-import { ArtistComponent } from './customer.component';
+
 
 describe('CustomerComponent', () => {
   //let component: CustomerComponent;-->comentaree esta linea, para que dejara de dar error;

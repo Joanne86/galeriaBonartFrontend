@@ -1,6 +1,9 @@
 <div style="display: flex; justify-content: left; margin-left: 40px;">
   <div class="col-md-8 container">
-    <h2>Registro de clientes al evento</h2>
+    <h2>Registro de clientes al evento</h2> 
+    <h3 id="total">Total en ventas de entradas: {{total | currency}}</h3>
+    <h4>PAGO ADULTOS: $20.000</h4>
+    <h4>PAGO MENORES DE EDAD: $10.000</h4>
     <form class="form-inline my-2 my-lg-3" id="buscador">
       <input [(ngModel)]="document" name="document" class="form-control" placeholder="Documento" id="document">
       <button class="btn btn-success my-2 my-sm-0 fas fa-search " id="btnbuscar" type="submit" (click)="findByDocument()"></button>

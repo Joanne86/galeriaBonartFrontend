@@ -36,6 +36,13 @@ export class RepositoryService {
   public getTotal (room){
     return this.req.get(`/artworksaled-api/getTotal/`, { queryParams: { number_room: room } });
   }
+  public getTotals (){
+    return this.req.get(`/artworksaled-api/getTotals/`);
+  }
+
+  public getTotalT (){
+    return this.req.get(`/customer-api/getTotal/`);
+  }
 
   public findByDocument(endpoint, document){
     return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document: document } });
