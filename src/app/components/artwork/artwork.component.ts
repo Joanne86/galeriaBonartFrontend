@@ -17,6 +17,7 @@ export class ArtworkComponent implements OnInit {
   sale: Sale;
   customer: Customer;
   document;
+  name;
   constructor(private artworkService: RepositoryService) { }
   show: boolean;
   ngOnInit() {

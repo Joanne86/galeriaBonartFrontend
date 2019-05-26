@@ -44,16 +44,15 @@ export class LoginComponent implements OnInit {
     }
   }
   //habilitar los bonotes de busqueda y consumir el service (1 hora) -->
-  //crear el form de artwork y consumir el servicio -->
-  //unificar los dos componentes en uuno solo y poder hacer la animacion -->
-  //crear componente de añadir artwork y conssumir ese service (2 horas) -->
-  //verificar si existe la cedula con el que se esta creandp la obra -->
-  //crear componente de customer
-  //lograr vender pidiendo el doc del customer asosiado, en un modal (3 horas)
+  //crear componente de añadir artwork y conssumir ese service (2 horas) --
   //crear el componente de ventas y hacer las consultas que pide el enunciado (2 horas)
   //crear componente de segundo flujo con su menu  (2 hora)
   //crear componente de registro de clientes para segundo flujo (3 horas)
   //hacer redireccion de flujos (1 hora)
   //dejar el componente de admin salas, asignacion de seller y registro de clientes en el segundo flujo (1 hora)
   //pruebas unitarias(indefinido)
+
+  //arreglar el ngModule que se escriba a ambos lados
+  //Tener un mensaje que no puede borrar artistas o intentar borrar con todas sus obras
+  //dejar el borrado de artistas para los que no tienen obras
 }

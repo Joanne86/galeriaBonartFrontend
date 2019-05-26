@@ -38,11 +38,18 @@ export class RepositoryService {
   }
 
   public findByDocument(endpoint, document){
-    return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document } });
+    return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document: document } });
+  }
+  public findByDocument_(endpoint, document){
+    return this.req.get(`/`+endpoint+`/findByDocument_/`, { queryParams: { document: document } });
   }
 
   public delete(endpoint, artwork) {
     return this.req.delete(`/`+endpoint+`/delete/`, { queryParams: {inscription_code: artwork.inscription_code} });
+  }
+
+  public deleteArtist(endpoint, artist) {
+    return this.req.delete(`/`+endpoint+`/delete/`, {queryParams: {document: artist.document} });
   }
 
   public findById(endpoint,user) {

@@ -25,11 +25,14 @@ export class ArtistComponent implements OnInit {
         this.errorFindAll = true;
       });
   }
-
-  deleteArtist(): void {
-    console.log('borra');
-  }
-  updateArtist(): void {
-    console.log('edita');
+  findByDocument(document){
+    this.artistService.findByDocument_(`artist-api`, document).then(response => {
+      if(response===null){
+        alert('El Artista no se encuentra');
+      }else{
+        this.artists = [];
+        this.artists.push(response);
+      }    
+    });
   }
 }
