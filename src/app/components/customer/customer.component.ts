@@ -8,57 +8,35 @@ import { RepositoryService } from 'src/app/services/repository.service';
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class ArtistComponent implements OnInit {
+export class CustomerComponent implements OnInit {
 
-  artist : Customer = new Customer();
-  artists: Customer[];
+  customer: Customer = new Customer();
+  customers: Customer[];
+  show: boolean;
 
   constructor(private customerService: RepositoryService, private loginService: LoginService) { }
 
   ngOnInit() {
-    //this.idloged=this.loginService.idloged;
-      this.customerService.findAll(`customer-api`)
-      .then(data => {
-        this.artists = data;
-      });
-      
-    /* if(this.idloged!=0){
-     // this.artistService.readUsersId(this.idloged)
-      .then(data => {
-        this.artists = data;
-      });
-    }else{
-      this.userService.getUsers()
-      .then(data => {
-       // this.users = data;
-      });
-    }    */
+    this.show = false;
+    this.findAll();
   }
+  findAll() {
+    this.customerService.findAll(`customer-api`)
+      .then(data => {
+        this.customers = data;
+      });
+  }
+  mostrarComponente() {
 
-  deleteArtist(): void {
-   console.log("borra");
+    if (this.show === false) {
+      console.log('muetsra componente');
+      this.show = true;
+    } else {
+      console.log('oculta componente');
+      this.show = false;
+    }
   }
-  updateArtist(): void {
-    console.log("edita");
+  createCustomer(customer) {
+
   }
-  /*deleteUser(user: User): void {
-    this.userService.deleteUser(user)
-      .then(data => {
-      //  this.users = this.users.filter(u => u !== user);
-      });
-  }
-  editUser(user: User): void{
-    this.userService.deleteUser(user)
-    .then(data =>{
-      
-    })
-  }
-  readUser(user: User): void{
-    this.userService.readUser(user)
-      .then(data => {
-       // this.users = [];
-       // this.users.push(data);
-      });
-  }
-*/
 }

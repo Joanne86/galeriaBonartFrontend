@@ -15,35 +15,55 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { ArtworkComponent } from './components/artwork/artwork.component';
 import { FormArtistComponent } from './components/form-artist/form-artist.component';
-import { FormCustomerComponent } from './components/form-customer/form-customer.component';
+import { Menu2Component } from './components/menu2/menu2.component';
+import { CustomerComponent } from './components/customer/customer.component';
 
 const routes: Routes = [
-  { path: 'welcome', component: MenuComponent, children: [ // rutas hijas, se verán dentro del componente padre
-    {
-      path: 'artists', 
-      component: ArtistComponent
-    },
-    {
-      path: 'rooms', 
-      component: RoomComponent
-    },
-    {
-      path: 'sales', 
-      component: SaleComponent
-    },
-    {
-      path: 'artworks', 
-      component: ArtworkComponent
-    },
-  ] },
-  
+  {
+    path: 'welcome', component: MenuComponent, children: [ // rutas hijas, se verán dentro del componente padre
+      {
+        path: 'artists',
+        component: ArtistComponent
+      },
+      {
+        path: 'rooms',
+        component: RoomComponent
+      },
+      {
+        path: 'sales',
+        component: SaleComponent
+      },
+      {
+        path: 'artworks',
+        component: ArtworkComponent
+      },
+    ]
+  },
+
+  {
+    path: 'welcome_admin', component: Menu2Component, children: [ // rutas hijas, se verán dentro del componente padre
+      {
+        path: 'artists_admin',
+        component: FormArtistComponent
+      },
+      {
+        path: 'customer_admin',
+        component: CustomerComponent
+      },
+      {
+        path: 'sales',
+        component: SaleComponent
+      },
+    ]
+  },
   { path: 'sesion', component: LoginComponent },
-  { path: 'home', component: HomeComponent}
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    CustomerComponent,
     MenuComponent,
     HomeComponent,
     LoginComponent,
@@ -52,7 +72,7 @@ const routes: Routes = [
     SaleComponent,
     ArtworkComponent,
     FormArtistComponent,
-    FormCustomerComponent
+    Menu2Component
   ],
   imports: [
     BrowserModule,

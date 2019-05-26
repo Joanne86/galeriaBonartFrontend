@@ -14,12 +14,12 @@ export class MenuComponent implements OnInit {
   constructor(private roomService: RepositoryService) { }
 
   ngOnInit() {
-    this.roomService.getCode(sessionStorage.getItem("sellerD")).then(data => {
+    this.roomService.getCode(sessionStorage.getItem('sellerD')).then(data => {
       this.room = data;
-      this.name = sessionStorage.getItem("sellerName");
-      console.log('room code: ',this.room.code);
-      console.log('room : ',this.room);
-      sessionStorage.setItem("codeRoom", this.room.code.toString());
+      this.name = sessionStorage.getItem('sellerName');
+      console.log('room code: ', this.room.code);
+      console.log('room : ', this.room);
+      sessionStorage.setItem('codeRoom', this.room.code.toString());
     });
   }
 

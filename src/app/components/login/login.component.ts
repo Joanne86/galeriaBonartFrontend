@@ -30,10 +30,13 @@ export class LoginComponent implements OnInit {
             console.log('seller--->', this.seller);
             sessionStorage.setItem("sellerD",this.seller.document);
             sessionStorage.setItem("sellerName", this.seller.name);
-            this.router.navigate(['welcome']);
+            if(this.seller.document==="5434544576"){
+              this.router.navigate(['welcome_admin']);
+            }else{
+              this.router.navigate(['welcome']);
+            }      
           }
         }, error => {
-
           if (error.status === 404) {
             alert('usuario y/0 contraseña incorrectos')
           }

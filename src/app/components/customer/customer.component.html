@@ -1,31 +1,72 @@
-<div class="col-md-8 container">
-  <h2>Clientes registrados al evento</h2>
-  <form class="form-inline my-2 my-lg-3" id="buscador">
-    <input [(ngModel)]="customer.document" name="document" class="form-control" placeholder="Documento" id="document">
-    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit" ></button>
-  </form>
+<div style="display: flex; justify-content: left; margin-left: 40px;">
+  <div class="col-md-8 container">
+    <h2>Registro de clientes al evento</h2>
+    <form class="form-inline my-2 my-lg-3" id="buscador">
+      <input [(ngModel)]="customer.document" name="document" class="form-control" placeholder="Documento" id="document">
+      <button class="btn btn-success my-2 my-sm-0 fas fa-search " id="btnbuscar" type="submit"></button>
+    </form>
 
-  <table class="table">
-    <thead id="thead">
-      <tr>
-        <th class="hidden">Documento</th>
-        <th>Nombre</th>
-        <th>Celular</th>
-        <th>E-Mail</th>
-        <th>Ciudad</th>
-        <th>Flag</th>
-        <th>codetype</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let customer of customers">
-        <td class="hidden">{{customer.document}}</td>
-        <td>{{customer.name}}</td>
-        <td>{{customer.cellphone}}</td>
-        <td>{{customer.email}}</td>
-        <td>{{customer.flag}}</td>
-        <td>{{customer.codetype}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table">
+      <thead id="thead">
+        <tr>
+          <th class="hidden">Documento</th>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+          <th>E-Mail</th>
+          <th>Tipo cliente</th>
+          <th>Ingresar</th>
+          <th>  <button class="float-right btn btn-success" (click)="mostrarComponente()" id="btnAddArtwork"> 
+              Registrar cliente <i class="fas fa-plus"></i></button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td class="hidden">{{customer.document}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.cellphone}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.typeCustomer.typec}}</td>
+          <td>boton de ingreso</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mx-5 mt-15" *ngIf="show" id="container">
+    <form>
+      <div class="row">
+        <div class="form-group">
+          <label>Documento</label>
+          <input [(ngModel)]="customer.document" name="document" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input [(ngModel)]="customer.name" name="name" class="form-control" placeholder="Nombre">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Numero de celular</label>
+          <input [(ngModel)]="customer.cellphone" name="cellphone" class="form-control" placeholder="Telefono">
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input [(ngModel)]="customer.email" name="email" class="form-control" placeholder="E-Mail">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Tipo cliente</label>
+          <select name="select" [(ngModel)]="customer.codetype" name="codetype" class="form-control"
+            placeholder="CodeType">
+            <option value="value1">ADULTO</option>
+            <option value="value3">MENOR DE EDAD</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary" (click)="createCustomer(customer)">Registrar cliente</button>
+      </div>
+    </form>
+  </div>
 </div>
