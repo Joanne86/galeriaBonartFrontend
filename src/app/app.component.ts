@@ -15,7 +15,7 @@ export class AppComponent {
     this.redirectToHome();
   }
   redirectToHome(){
-    this.router.navigate(['welcome']);
+    this.router.navigate(['home']);
   }
 }
 

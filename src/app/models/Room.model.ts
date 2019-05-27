@@ -1,6 +1,6 @@
-import { Seller } from "./Seller.model";
+import { Seller } from './Seller.model';
 
-export class Room{
+export class Room {
     code: number;
     name: string;
     seller: Seller;

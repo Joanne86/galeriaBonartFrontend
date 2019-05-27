@@ -3,8 +3,8 @@
 <div class="col-md-15">
   <h2>Obras</h2>
   <form class="form-inline my-3 my-lg-20" id="buscador">
-    <input [(ngModel)]="artwork.name" name="name" class="form-control" placeholder="Nombre de la obra" id="name">
-    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit"(click)= findArtwork(artwork.name) ></button>
+    <input [(ngModel)]="name" name="name" class="form-control" placeholder="Nombre de la obra" id="name">
+    <button class="btn btn-success my-2 my-sm-0 fas fa-search " id ="btnbuscar" type="submit"(click)= findArtwork(name) ></button>
   </form>
 
   <table class="table">
