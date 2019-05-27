@@ -8,4 +8,8 @@ export class ArtworkSaled {
     artist: string;
 
     number_room: number;
+
+    customer: string;
+
+    seller : string;
 }

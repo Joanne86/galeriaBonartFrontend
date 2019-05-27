@@ -36,13 +36,27 @@ export class RepositoryService {
   public getTotal (room){
     return this.req.get(`/artworksaled-api/getTotal/`, { queryParams: { number_room: room } });
   }
+  public getTotals (){
+    return this.req.get(`/artworksaled-api/getTotals/`);
+  }
+
+  public getTotalT (){
+    return this.req.get(`/customer-api/getTotal/`);
+  }
 
   public findByDocument(endpoint, document){
-    return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document } });
+    return this.req.get(`/`+endpoint+`/findByDocument/`, { queryParams: { document: document } });
+  }
+  public findByDocument_(endpoint, document){
+    return this.req.get(`/`+endpoint+`/findByDocument_/`, { queryParams: { document: document } });
   }
 
   public delete(endpoint, artwork) {
     return this.req.delete(`/`+endpoint+`/delete/`, { queryParams: {inscription_code: artwork.inscription_code} });
+  }
+
+  public deleteArtist(endpoint, artist) {
+    return this.req.delete(`/`+endpoint+`/delete/`, {queryParams: {document: artist.document} });
   }
 
   public findById(endpoint,user) {

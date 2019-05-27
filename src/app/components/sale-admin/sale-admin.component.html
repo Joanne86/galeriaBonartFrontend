@@ -1,0 +1,29 @@
+<div class="col-md-9 container">
+    <h2>Ventas de obras realizadas en todo el evento</h2>
+    <form class="form-inline my-2 my-lg-3" id="buscador">
+     <h4>Total en ventas: {{total | currency}} </h4>
+    </form>
+  
+    <table class="table">
+      <thead id="thead">
+        <tr>
+          <th class="hidden">Codigo de inscripcion</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Artista</th>
+          <th>Cliente</th>
+          <th>Vendedor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let artworkSaled of artworksSaled">
+          <td class="hidden">{{artworkSaled.inscription_code}}</td>
+          <td>{{artworkSaled.name}}</td>
+          <td>{{artworkSaled.price | currency}}</td>
+          <td>{{artworkSaled.artist}}</td>
+          <td>{{artworkSaled.customer}}</td>
+          <td>{{artworkSaled.seller}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

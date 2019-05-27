@@ -1,5 +1,5 @@
 <div class="col-md-8 container">
-  <h2>Ventas de obras realizadas</h2>
+  <h2>Ventas de obras realizadas en esta sala</h2>
   <form class="form-inline my-2 my-lg-3" id="buscador">
    <h4>Total en ventas: {{total | currency}} </h4>
   </form>
@@ -11,6 +11,7 @@
         <th>Nombre</th>
         <th>Precio</th>
         <th>Artista</th>
+        <th>Cliente</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <td>{{artworkSaled.name}}</td>
         <td>{{artworkSaled.price | currency}}</td>
         <td>{{artworkSaled.artist}}</td>
+        <td>{{artworkSaled.customer}}</td>
       </tr>
     </tbody>
   </table>
