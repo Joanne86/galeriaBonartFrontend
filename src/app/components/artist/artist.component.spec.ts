@@ -6,7 +6,7 @@ import { RepositoryService } from 'src/app/services/repository.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
 
-describe('ArtistComponent', () => {
+fdescribe('ArtistComponent', () => {
   let component: ArtistComponent;
   let fixture: ComponentFixture<ArtistComponent>;
 

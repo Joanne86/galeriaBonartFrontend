@@ -17,14 +17,18 @@ export class ArtistComponent implements OnInit {
   constructor(private artistService: RepositoryService, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.artistService.findAll(`artist-api`)
-      .then(data => {
-        this.artists = data;
-        this.errorFindAll = false;
-      }, error => {
-        this.errorFindAll = true;
-      });
+   this.findAll();
   }
+  findAll(){
+    this.artistService.findAll(`artist-api`)
+    .then(data => {
+      this.artists = data;
+      this.errorFindAll = false;
+    }, error => {
+      this.errorFindAll = true;
+    });
+  }
+
   findByDocument(document){
     this.artistService.findByDocument_(`artist-api`, document).then(response => {
       if(response===null){
