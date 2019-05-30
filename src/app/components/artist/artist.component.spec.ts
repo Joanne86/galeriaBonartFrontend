@@ -29,39 +29,47 @@ fdescribe('ArtistComponent', () => {
     fixture.detectChanges();
   });
 
-   function spyArtistService(){
+   function spyFindAll(){
      
-     var artists = [
-       {
-        document: "",
-        name: "",
-        cellphone: "",
-        address: "",
-        city: "",
-        exhibitions: ""
-       },
-       {
-        document: "",
-        name: "",
-        cellphone: "",
-        address: "",
-        city: "",
-        exhibitions: ""
-       }
-     ]
+    const promisedData = require('../../../assets/artist.json');
     
     component.findAll();
-    spyOn(artistService, 'findAll').and.returnValue(Promise.resolve(artists));
+    spyOn(artistService, 'findAll').and.returnValue(Promise.resolve(promisedData));
     artistService.findAll(`artist-api`).then(result =>{
-      expect(component.artists).toBe(undefined);
-    })
+        expect(result).toEqual(promisedData); 
+    });
    
+  }
+  function spyFindByDocument(){
+    const promisedData = require('../../../assets/artist.json');
+    
+    component.findByDocument("123456789");
+    spyOn(artistService, 'findByDocument_').and.returnValue(Promise.resolve(promisedData));
+    artistService.findByDocument_(`artist-api`, "123456789").then(result =>{
+        expect(result).toEqual(promisedData); 
+    });
+  }
+  function spyFindByDocumentFail(){
+    const promisedData = null;
+    
+    component.findByDocument("123456789");
+    spyOn(artistService, 'findByDocument_').and.returnValue(Promise.resolve(null));
+    artistService.findByDocument_(`artist-api`, "123456789").then(result =>{
+        expect(result).toEqual(promisedData); 
+        
+    });
   }
   it('should create artist test ', () => {
     expect(component).toBeTruthy();
   });
   it('should findAll test ', () => {
-    spyArtistService();  
+    spyFindAll();  
   });
-
+  it('should findByDocument test ', () => {
+    spyFindByDocument();  
+  });
+  it('should findByDocument fail test ', () => {
+    spyFindByDocumentFail();  
+  });
+  
 });
